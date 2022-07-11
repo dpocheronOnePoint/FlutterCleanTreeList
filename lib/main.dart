@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:clean_archi_flutter_tree_list/application/app.dart';
+import 'application/app.dart';
+import 'injector.dart';
 
-void main() {
+Future<void> main() async {
+  await initializeDependencies();
   runApp(Application());
 }
