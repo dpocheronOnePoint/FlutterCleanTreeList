@@ -7,6 +7,6 @@ class RepositoryModule {
   static final TreeService _treeService = getIt.get<TreeService>();
 
   static TreeRepository treeRepository() {
-    return TreeRepositoryImpl(_treeService);
+    return getIt.get<TreeRepositoryImpl>();
   }
 }
