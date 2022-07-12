@@ -11,23 +11,49 @@ class TreeList extends StatefulWidget {
 }
 
 class _TreeListState extends State<TreeList> {
+  int _selectedIndex = 0;
+
+  TreeListState treeListState = getIt.get<TreeListState>();
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   Widget _body() {
     return Observer(builder: (_) {
       if (getIt.get<TreeListState>().isLoading)
         return Center(child: CircularProgressIndicator());
 
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          Text(
-              'Le nom du premier arbre: ${getIt.get<TreeListState>().trees[0].name}'),
-        ],
-      );
+      return Center(
+          child:
+              Text('Le nom du premier arbre ${treeListState.trees[0].name}'));
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: SafeArea(child: _body()));
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Liste des arbres'),
+      ),
+      body: SafeArea(child: _body()),
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list),
+            label: 'Liste',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            label: 'Carte',
+          ),
+        ],
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.amber[800],
+        onTap: _onItemTapped,
+      ),
+    );
   }
 }
