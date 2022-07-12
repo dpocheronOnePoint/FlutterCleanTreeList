@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:clean_archi_flutter_tree_list/presentation/tree_list.dart';
-import 'package:clean_archi_flutter_tree_list/application/dependencies/tree_list_module.dart';
 
 class Application extends StatelessWidget {
   @override
@@ -10,7 +9,7 @@ class Application extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity),
-      home: TreeList(treeListState: TreeListModule.treeListState()),
+      home: TreeList(),
     );
   }
 }

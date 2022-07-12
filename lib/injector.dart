@@ -14,5 +14,6 @@ Future<void> initializeDependencies() async {
 
   getIt.registerSingleton<TreeService>(TreeService());
   getIt.registerSingleton<TreeRepository>(TreeRepositoryImpl());
-  getIt.registerSingleton(TreeUseCase(getIt()));
+  getIt.registerSingleton(TreeUseCase());
+  getIt.registerSingleton<TreeListState>(TreeListState());
 }
