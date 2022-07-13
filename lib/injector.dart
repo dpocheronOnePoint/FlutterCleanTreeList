@@ -12,10 +12,9 @@ final getIt = GetIt.instance;
 
 Future<void> initializeDependencies() async {
   getIt.registerSingleton<Dio>(Dio());
-
-  getIt.registerSingleton<TreeService>(TreeService());
-  getIt.registerSingleton<TreeRepository>(TreeRepositoryImpl());
-  getIt.registerSingleton(TreeUseCase());
-  getIt.registerSingleton<TreeListState>(TreeListState());
   getIt.registerSingleton<TreeDAO>(TreeDAO());
+  getIt.registerSingleton<TreeService>(TreeService());
+  getIt.registerSingleton<TreeUseCase>(TreeUseCase());
+  getIt.registerSingleton<TreeRepository>(TreeRepositoryImpl());
+  getIt.registerSingleton<TreeListState>(TreeListState());
 }
