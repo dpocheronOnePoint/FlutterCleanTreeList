@@ -1,6 +1,5 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
-import '../database/tables/tree_table.dart';
 
 class DbConfig {
   static Database? _db;
@@ -15,7 +14,9 @@ class DbConfig {
 
           onCreate: (db, version) {
             // Run the CREATE TABLE statement on the database.
-            return db.execute(TreeTable.create());
+            return db.execute(
+              'CREATE TABLE tree(id INTEGER PRIMARY KEY, name TEXT)',
+            );
           },
           // Set the version. This executes the onCreate function and provides a
           // path to perform database upgrades and downgrades.

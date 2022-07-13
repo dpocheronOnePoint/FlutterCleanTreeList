@@ -6,6 +6,7 @@ import 'data/services/tree_service.dart';
 import 'data/repositories/tree_repository_impl.dart';
 import 'domain/usescases/tree_usecase.dart';
 import 'presentation/tree_list_state.dart';
+import 'data/database/dao/tree_dao.dart';
 
 final getIt = GetIt.instance;
 
@@ -16,4 +17,5 @@ Future<void> initializeDependencies() async {
   getIt.registerSingleton<TreeRepository>(TreeRepositoryImpl());
   getIt.registerSingleton(TreeUseCase());
   getIt.registerSingleton<TreeListState>(TreeListState());
+  getIt.registerSingleton<TreeDAO>(TreeDAO());
 }
