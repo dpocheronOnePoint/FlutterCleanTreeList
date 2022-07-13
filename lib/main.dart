@@ -4,5 +4,5 @@ import 'injector.dart';
 
 Future<void> main() async {
   await initializeDependencies();
-  runApp(Application());
+  runApp(const Application());
 }

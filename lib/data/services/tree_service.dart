@@ -1,11 +1,10 @@
 import 'package:clean_archi_flutter_tree_list/data/models/record_data_dto.dart';
 import 'package:clean_archi_flutter_tree_list/data/models/tree_dto.dart';
 import 'package:dio/dio.dart';
-import 'package:intl/intl.dart';
 import 'package:clean_archi_flutter_tree_list/data/services/api_url.dart';
 
 class TreeService {
-  final API_URL apiUrl = API_URL();
+  final ApiUrl apiUrl = ApiUrl();
   final Dio dio = Dio();
 
   Future<List<TreeDTO>> getTreeList(int startIndex) async {
