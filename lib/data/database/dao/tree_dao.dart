@@ -14,7 +14,6 @@ class TreeDAO {
 
   Future<List<Tree>> getTrees() async {
     database = await DbConfig.initializeDatabase();
-    print('Je passe ici !');
     final List<Map<String, dynamic>> maps = await database!.query('tree');
 
     return List.generate(maps.length, (index) {

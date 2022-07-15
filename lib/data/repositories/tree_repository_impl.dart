@@ -22,6 +22,7 @@ class TreeRepositoryImpl extends TreeRepository {
       return trees;
     } else {
       print('From Local');
+      print(localTrees.length);
       return localTrees;
     }
   }
