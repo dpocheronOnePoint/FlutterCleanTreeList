@@ -7,21 +7,19 @@ class TreeDAO {
   Database? database;
 
   TreeDAO() {
-    getDbInstance();
+    // getDbInstance();
   }
 
   void getDbInstance() async => database = await DbConfig.initializeDatabase();
 
   Future<List<Tree>> getTrees() async {
-    if (database != null) {
-      final List<Map<String, dynamic>> maps = await database!.query('tree');
+    database = await DbConfig.initializeDatabase();
+    print('Je passe ici !');
+    final List<Map<String, dynamic>> maps = await database!.query('tree');
 
-      return List.generate(maps.length, (index) {
-        return Tree(id: maps[index]['id'], name: maps[index]['name'] ?? '');
-      });
-    }
-
-    return [];
+    return List.generate(maps.length, (index) {
+      return Tree(id: maps[index]['id'], name: maps[index]['name'] ?? '');
+    });
   }
 
   Future<void> insertTree(Tree tree) async {
