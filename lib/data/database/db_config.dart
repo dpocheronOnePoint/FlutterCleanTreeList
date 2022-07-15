@@ -22,7 +22,6 @@ class DbConfig {
           // path to perform database upgrades and downgrades.
           version: 1,
         );
-    ;
   }
 
   static close() async {
