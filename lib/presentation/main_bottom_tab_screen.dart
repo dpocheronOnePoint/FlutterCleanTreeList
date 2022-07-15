@@ -1,35 +1,25 @@
-import 'package:clean_archi_flutter_tree_list/injector.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/map_screen.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/tree_list_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:clean_archi_flutter_tree_list/presentation/tree_list_state.dart';
 
-class TreeList extends StatefulWidget {
-  const TreeList({Key? key}) : super(key: key);
+class MainBottomTabScreen extends StatefulWidget {
+  const MainBottomTabScreen({Key? key}) : super(key: key);
 
   @override
-  _TreeListState createState() => _TreeListState();
+  _MainBottomTabScreenState createState() => _MainBottomTabScreenState();
 }
 
-class _TreeListState extends State<TreeList> {
+class _MainBottomTabScreenState extends State<MainBottomTabScreen> {
   int _selectedIndex = 0;
 
-  TreeListState treeListState = getIt.get<TreeListState>();
+  static const List<Widget> _widgetOptions = <Widget>[
+    TreeListScreen(),
+    MapScreen()
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
       _selectedIndex = index;
-    });
-  }
-
-  Widget _body() {
-    return Observer(builder: (_) {
-      if (getIt.get<TreeListState>().isLoading) {
-        return Center(child: CircularProgressIndicator());
-      }
-
-      return Center(
-          child:
-              Text('Le nom du premier arbre ${treeListState.trees[0].name}'));
     });
   }
 
@@ -39,7 +29,9 @@ class _TreeListState extends State<TreeList> {
       appBar: AppBar(
         title: const Text('Liste des arbres'),
       ),
-      body: SafeArea(child: _body()),
+      body: Center(
+        child: _widgetOptions.elementAt(_selectedIndex),
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
