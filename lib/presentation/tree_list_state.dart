@@ -22,8 +22,6 @@ abstract class TreeListeStateBase with Store {
   Future<void> getTrees() async {
     isLoading = true;
     trees = await getIt.get<TreeUseCase>().getTrees(startIndex: 0);
-    print(trees[0].coordinate.latitude);
-    print(trees[0].coordinate.longitude);
     isLoading = false;
   }
 }

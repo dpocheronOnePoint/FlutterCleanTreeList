@@ -43,7 +43,7 @@ class ClusterMapScreenState extends State<ClusterMapScreen> {
   }
 
   void _updateMarkers(Set<Marker> markers) {
-    print('Updated ${markers.length} markers');
+    debugPrint('Updated ${markers.length} markers');
     setState(() {
       this.markers = markers;
     });
@@ -70,8 +70,10 @@ class ClusterMapScreenState extends State<ClusterMapScreen> {
           markerId: MarkerId(cluster.getId()),
           position: cluster.location,
           onTap: () {
-            print('---- $cluster');
-            cluster.items.forEach((p) => print(p));
+            debugPrint('---- $cluster');
+            for (var p in cluster.items) {
+              debugPrint('$p');
+            }
           },
           icon: await _getMarkerBitmap(cluster.isMultiple ? 125 : 75,
               text: cluster.isMultiple ? cluster.count.toString() : null),

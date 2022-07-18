@@ -4,6 +4,7 @@ import 'package:clean_archi_flutter_tree_list/domain/entities/tree.dart';
 import 'package:clean_archi_flutter_tree_list/domain/repositories/tree_repository.dart';
 import 'package:clean_archi_flutter_tree_list/data/models/tree_dto.dart';
 import 'package:clean_archi_flutter_tree_list/injector.dart';
+import 'package:flutter/foundation.dart';
 
 class TreeRepositoryImpl extends TreeRepository {
   TreeService treeService = getIt.get<TreeService>();
@@ -15,10 +16,11 @@ class TreeRepositoryImpl extends TreeRepository {
     // if (localTrees.isEmpty) {
     final response = await treeService.getTreeList(startIndex);
     List<Tree> trees = response.map((e) => e.toModel()).toList();
+    // ignore: avoid_function_literals_in_foreach_calls
     trees.forEach((tree) async {
       await treeDao.insertTree(tree);
     });
-    print('From WS');
+    debugPrint('From WS');
     return trees;
     // } else {
     //   print('From Local');
