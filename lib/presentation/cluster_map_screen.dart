@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:clean_archi_flutter_tree_list/domain/entities/place.dart';
-import 'package:clean_archi_flutter_tree_list/domain/entities/tree.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/tree_list_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +9,7 @@ import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import '../domain/entities/tree.dart';
+import '../injector.dart';
 
 // Clustering maps
 
@@ -23,6 +23,8 @@ class MapSample extends StatefulWidget {
 class MapSampleState extends State<MapSample> {
   late ClusterManager _manager;
 
+  TreeListState treeListState = getIt.get<TreeListState>();
+
   Completer<GoogleMapController> _controller = Completer();
 
   Set<Marker> markers = Set();
@@ -30,32 +32,32 @@ class MapSampleState extends State<MapSample> {
   final CameraPosition _parisCameraPosition =
       CameraPosition(target: LatLng(48.856613, 2.352222), zoom: 12.0);
 
-  List<Place> items = [
-    for (int i = 0; i < 10; i++)
-      Place(
-          tree: initialTree,
-          latLng: LatLng(48.848200 + i * 0.001, 2.319124 + i * 0.001)),
-    for (int i = 0; i < 10; i++)
-      Place(
-          tree: initialTree,
-          latLng: LatLng(48.858265 - i * 0.001, 2.350107 + i * 0.001)),
-    for (int i = 0; i < 10; i++)
-      Place(
-          tree: initialTree,
-          latLng: LatLng(48.858265 + i * 0.01, 2.350107 - i * 0.01)),
-    for (int i = 0; i < 10; i++)
-      Place(
-          tree: initialTree,
-          latLng: LatLng(48.858265 - i * 0.1, 2.350107 - i * 0.01)),
-    for (int i = 0; i < 10; i++)
-      Place(
-          tree: initialTree,
-          latLng: LatLng(66.160507 + i * 0.1, -153.369141 + i * 0.1)),
-    for (int i = 0; i < 10; i++)
-      Place(
-          tree: initialTree,
-          latLng: LatLng(-36.848461 + i * 1, 169.763336 + i * 1)),
-  ];
+  // List<Place> items = [
+  //   for (int i = 0; i < 10; i++)
+  //     Place(
+  //         tree: initialTree,
+  //         latLng: LatLng(48.848200 + i * 0.001, 2.319124 + i * 0.001)),
+  //   for (int i = 0; i < 10; i++)
+  //     Place(
+  //         tree: initialTree,
+  //         latLng: LatLng(48.858265 - i * 0.001, 2.350107 + i * 0.001)),
+  //   for (int i = 0; i < 10; i++)
+  //     Place(
+  //         tree: initialTree,
+  //         latLng: LatLng(48.858265 + i * 0.01, 2.350107 - i * 0.01)),
+  //   for (int i = 0; i < 10; i++)
+  //     Place(
+  //         tree: initialTree,
+  //         latLng: LatLng(48.858265 - i * 0.1, 2.350107 - i * 0.01)),
+  //   for (int i = 0; i < 10; i++)
+  //     Place(
+  //         tree: initialTree,
+  //         latLng: LatLng(66.160507 + i * 0.1, -153.369141 + i * 0.1)),
+  //   for (int i = 0; i < 10; i++)
+  //     Place(
+  //         tree: initialTree,
+  //         latLng: LatLng(-36.848461 + i * 1, 169.763336 + i * 1)),
+  // ];
 
   @override
   void initState() {
@@ -64,7 +66,7 @@ class MapSampleState extends State<MapSample> {
   }
 
   ClusterManager _initClusterManager() {
-    return ClusterManager<Place>(items, _updateMarkers,
+    return ClusterManager<Tree>(treeListState.trees, _updateMarkers,
         markerBuilder: _markerBuilder);
   }
 
@@ -91,8 +93,7 @@ class MapSampleState extends State<MapSample> {
     );
   }
 
-  Future<Marker> Function(Cluster<Place>) get _markerBuilder =>
-      (cluster) async {
+  Future<Marker> Function(Cluster<Tree>) get _markerBuilder => (cluster) async {
         return Marker(
           markerId: MarkerId(cluster.getId()),
           position: cluster.location,
