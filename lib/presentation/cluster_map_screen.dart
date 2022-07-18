@@ -11,16 +11,14 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import '../domain/entities/tree.dart';
 import '../injector.dart';
 
-// Clustering maps
-
-class MapSample extends StatefulWidget {
-  const MapSample({Key? key}) : super(key: key);
+class ClusterMapScreen extends StatefulWidget {
+  const ClusterMapScreen({Key? key}) : super(key: key);
 
   @override
-  State<MapSample> createState() => MapSampleState();
+  State<ClusterMapScreen> createState() => ClusterMapScreenState();
 }
 
-class MapSampleState extends State<MapSample> {
+class ClusterMapScreenState extends State<ClusterMapScreen> {
   late ClusterManager _manager;
 
   TreeListState treeListState = getIt.get<TreeListState>();

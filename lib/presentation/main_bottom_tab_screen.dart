@@ -14,7 +14,7 @@ class _MainBottomTabScreenState extends State<MainBottomTabScreen> {
 
   static const List<Widget> _widgetOptions = <Widget>[
     TreeListScreen(),
-    MapSample()
+    ClusterMapScreen()
   ];
 
   void _onItemTapped(int index) {
