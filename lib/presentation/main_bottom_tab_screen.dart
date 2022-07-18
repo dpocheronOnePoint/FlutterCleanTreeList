@@ -6,7 +6,7 @@ class MainBottomTabScreen extends StatefulWidget {
   const MainBottomTabScreen({Key? key}) : super(key: key);
 
   @override
-  _MainBottomTabScreenState createState() => _MainBottomTabScreenState();
+  State<MainBottomTabScreen> createState() => _MainBottomTabScreenState();
 }
 
 class _MainBottomTabScreenState extends State<MainBottomTabScreen> {

@@ -25,37 +25,11 @@ class ClusterMapScreenState extends State<ClusterMapScreen> {
 
   final Completer<GoogleMapController> _controller = Completer();
 
+  // ignore: prefer_collection_literals
   Set<Marker> markers = Set();
 
   final CameraPosition _parisCameraPosition =
       const CameraPosition(target: LatLng(48.856613, 2.352222), zoom: 12.0);
-
-  // List<Place> items = [
-  //   for (int i = 0; i < 10; i++)
-  //     Place(
-  //         tree: initialTree,
-  //         latLng: LatLng(48.848200 + i * 0.001, 2.319124 + i * 0.001)),
-  //   for (int i = 0; i < 10; i++)
-  //     Place(
-  //         tree: initialTree,
-  //         latLng: LatLng(48.858265 - i * 0.001, 2.350107 + i * 0.001)),
-  //   for (int i = 0; i < 10; i++)
-  //     Place(
-  //         tree: initialTree,
-  //         latLng: LatLng(48.858265 + i * 0.01, 2.350107 - i * 0.01)),
-  //   for (int i = 0; i < 10; i++)
-  //     Place(
-  //         tree: initialTree,
-  //         latLng: LatLng(48.858265 - i * 0.1, 2.350107 - i * 0.01)),
-  //   for (int i = 0; i < 10; i++)
-  //     Place(
-  //         tree: initialTree,
-  //         latLng: LatLng(66.160507 + i * 0.1, -153.369141 + i * 0.1)),
-  //   for (int i = 0; i < 10; i++)
-  //     Place(
-  //         tree: initialTree,
-  //         latLng: LatLng(-36.848461 + i * 1, 169.763336 + i * 1)),
-  // ];
 
   @override
   void initState() {
