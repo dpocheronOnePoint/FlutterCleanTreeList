@@ -23,12 +23,12 @@ class ClusterMapScreenState extends State<ClusterMapScreen> {
 
   TreeListState treeListState = getIt.get<TreeListState>();
 
-  Completer<GoogleMapController> _controller = Completer();
+  final Completer<GoogleMapController> _controller = Completer();
 
   Set<Marker> markers = Set();
 
   final CameraPosition _parisCameraPosition =
-      CameraPosition(target: LatLng(48.856613, 2.352222), zoom: 12.0);
+      const CameraPosition(target: LatLng(48.856613, 2.352222), zoom: 12.0);
 
   // List<Place> items = [
   //   for (int i = 0; i < 10; i++)

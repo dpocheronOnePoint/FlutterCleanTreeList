@@ -11,7 +11,7 @@ class TreeRepositoryImpl extends TreeRepository {
 
   @override
   Future<List<Tree>> getTrees({required int startIndex}) async {
-    List<Tree> localTrees = await treeDao.getTrees();
+    // List<Tree> localTrees = await treeDao.getTrees();
     // if (localTrees.isEmpty) {
     final response = await treeService.getTreeList(startIndex);
     List<Tree> trees = response.map((e) => e.toModel()).toList();
