@@ -2,11 +2,14 @@ import 'dart:async';
 import 'dart:ui';
 
 import 'package:clean_archi_flutter_tree_list/domain/entities/place.dart';
+import 'package:clean_archi_flutter_tree_list/domain/entities/tree.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import '../domain/entities/tree.dart';
 
 // Clustering maps
 
@@ -30,28 +33,27 @@ class MapSampleState extends State<MapSample> {
   List<Place> items = [
     for (int i = 0; i < 10; i++)
       Place(
-          name: 'Place $i',
+          tree: initialTree,
           latLng: LatLng(48.848200 + i * 0.001, 2.319124 + i * 0.001)),
     for (int i = 0; i < 10; i++)
       Place(
-          name: 'Restaurant $i',
-          isClosed: i % 2 == 0,
+          tree: initialTree,
           latLng: LatLng(48.858265 - i * 0.001, 2.350107 + i * 0.001)),
     for (int i = 0; i < 10; i++)
       Place(
-          name: 'Bar $i',
+          tree: initialTree,
           latLng: LatLng(48.858265 + i * 0.01, 2.350107 - i * 0.01)),
     for (int i = 0; i < 10; i++)
       Place(
-          name: 'Hotel $i',
+          tree: initialTree,
           latLng: LatLng(48.858265 - i * 0.1, 2.350107 - i * 0.01)),
     for (int i = 0; i < 10; i++)
       Place(
-          name: 'Test $i',
+          tree: initialTree,
           latLng: LatLng(66.160507 + i * 0.1, -153.369141 + i * 0.1)),
     for (int i = 0; i < 10; i++)
       Place(
-          name: 'Test2 $i',
+          tree: initialTree,
           latLng: LatLng(-36.848461 + i * 1, 169.763336 + i * 1)),
   ];
 
@@ -86,17 +88,6 @@ class MapSampleState extends State<MapSample> {
           },
           onCameraMove: _manager.onCameraMove,
           onCameraIdle: _manager.updateMap),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          _manager.setItems(<Place>[
-            for (int i = 0; i < 30; i++)
-              Place(
-                  name: 'New Place ${DateTime.now()} $i',
-                  latLng: LatLng(48.858265 + i * 0.01, 2.350107))
-          ]);
-        },
-        child: const Icon(Icons.update),
-      ),
     );
   }
 

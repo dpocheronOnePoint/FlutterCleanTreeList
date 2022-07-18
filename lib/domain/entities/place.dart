@@ -1,12 +1,12 @@
+import 'package:clean_archi_flutter_tree_list/domain/entities/tree.dart';
 import 'package:google_maps_cluster_manager/google_maps_cluster_manager.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Place with ClusterItem {
-  final String name;
+  final Tree tree;
   final LatLng latLng;
-  final bool? isClosed;
 
-  Place({required this.name, required this.latLng, this.isClosed});
+  Place({required this.tree, required this.latLng});
 
   @override
   LatLng get location => latLng;
