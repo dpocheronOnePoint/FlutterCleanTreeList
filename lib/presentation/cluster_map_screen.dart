@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:ui';
 
-import 'package:clean_archi_flutter_tree_list/presentation/tree_list_state.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/tree_list/tree_list_state.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

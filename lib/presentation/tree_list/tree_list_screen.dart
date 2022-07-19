@@ -1,8 +1,8 @@
-import 'package:clean_archi_flutter_tree_list/presentation/tree_list_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../injector.dart';
+import './tree_list_state.dart';
+import '../../injector.dart';
 
 class TreeListScreen extends StatefulWidget {
   const TreeListScreen({Key? key}) : super(key: key);

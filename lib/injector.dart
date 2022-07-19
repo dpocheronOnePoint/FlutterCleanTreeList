@@ -5,7 +5,7 @@ import 'package:get_it/get_it.dart';
 import 'data/services/tree_service.dart';
 import 'data/repositories/tree_repository_impl.dart';
 import 'domain/usescases/tree_usecase.dart';
-import 'presentation/tree_list_state.dart';
+import 'presentation/tree_list/tree_list_state.dart';
 import 'data/database/dao/tree_dao.dart';
 
 final getIt = GetIt.instance;

@@ -1,5 +1,5 @@
 import 'package:clean_archi_flutter_tree_list/presentation/cluster_map_screen.dart';
-import 'package:clean_archi_flutter_tree_list/presentation/tree_list_screen.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/tree_list/tree_list_screen.dart';
 import 'package:flutter/material.dart';
 
 class MainBottomTabScreen extends StatefulWidget {
