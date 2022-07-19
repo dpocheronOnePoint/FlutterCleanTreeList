@@ -3,12 +3,12 @@ import 'package:mobx/mobx.dart';
 import 'package:clean_archi_flutter_tree_list/domain/entities/tree.dart';
 import 'package:clean_archi_flutter_tree_list/domain/usescases/tree_usecase.dart';
 
-part 'tree_list_state.g.dart';
+part 'tree_getter_state.g.dart';
 
-class TreeListState = TreeListeStateBase with _$TreeListState;
+class TreeGetterState = TreeGetterStateBase with _$TreeGetterState;
 
-abstract class TreeListeStateBase with Store {
-  TreeListeStateBase() {
+abstract class TreeGetterStateBase with Store {
+  TreeGetterStateBase() {
     getTrees();
   }
 

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:clean_archi_flutter_tree_list/presentation/main_bottom_tab_screen.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/main/main_bottom_tab_screen.dart';
 
 class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);

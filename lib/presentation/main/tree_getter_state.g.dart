@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'tree_list_state.dart';
+part of 'tree_getter_state.dart';
 
 // **************************************************************************
 // StoreGenerator
@@ -8,9 +8,9 @@ part of 'tree_list_state.dart';
 
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
-mixin _$TreeListState on TreeListeStateBase, Store {
+mixin _$TreeGetterState on TreeGetterStateBase, Store {
   late final _$treesAtom =
-      Atom(name: 'TreeListeStateBase.trees', context: context);
+      Atom(name: 'TreeGetterStateBase.trees', context: context);
 
   @override
   List<Tree> get trees {
@@ -26,7 +26,7 @@ mixin _$TreeListState on TreeListeStateBase, Store {
   }
 
   late final _$isLoadingAtom =
-      Atom(name: 'TreeListeStateBase.isLoading', context: context);
+      Atom(name: 'TreeGetterStateBase.isLoading', context: context);
 
   @override
   bool get isLoading {
@@ -42,7 +42,7 @@ mixin _$TreeListState on TreeListeStateBase, Store {
   }
 
   late final _$getTreesAsyncAction =
-      AsyncAction('TreeListeStateBase.getTrees', context: context);
+      AsyncAction('TreeGetterStateBase.getTrees', context: context);
 
   @override
   Future<void> getTrees() {

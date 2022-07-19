@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import './tree_list_state.dart';
+import '../main/tree_getter_state.dart';
 import '../../injector.dart';
 
 class TreeListScreen extends StatefulWidget {
@@ -12,7 +12,7 @@ class TreeListScreen extends StatefulWidget {
 }
 
 class _TreeListScreenState extends State<TreeListScreen> {
-  TreeListState treeListState = getIt.get<TreeListState>();
+  TreeGetterState treeListState = getIt.get<TreeGetterState>();
 
   @override
   Widget build(BuildContext context) {
