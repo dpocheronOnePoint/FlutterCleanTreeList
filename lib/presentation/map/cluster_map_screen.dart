@@ -19,7 +19,7 @@ class ClusterMapScreen extends StatefulWidget {
 class ClusterMapScreenState extends State<ClusterMapScreen> {
   late ClusterManager _manager;
 
-  TreeGetterState treeListState = getIt.get<TreeGetterState>();
+  TreeGetterState treeGetterState = getIt.get<TreeGetterState>();
   ClusterMapState clusterMapState = getIt.get<ClusterMapState>();
 
   final Completer<GoogleMapController> _controller = Completer();
@@ -36,15 +36,17 @@ class ClusterMapScreenState extends State<ClusterMapScreen> {
     super.initState();
   }
 
+// This init can't be move to cluster State because _updateMarkers need to
+// be here to setSate markers
   ClusterManager _initClusterManager() {
-    return ClusterManager<Tree>(treeListState.trees, _updateMarkers,
+    return ClusterManager<Tree>(treeGetterState.trees, _updateMarkers,
         markerBuilder: clusterMapState.markerBuilder);
   }
 
-  void _updateMarkers(Set<Marker> markers) {
-    debugPrint('Updated ${markers.length} markers');
+  void _updateMarkers(Set<Marker> loadedMarkers) {
+    debugPrint('Updated ${loadedMarkers.length} markers');
     setState(() {
-      this.markers = markers;
+      markers = loadedMarkers;
     });
   }
 

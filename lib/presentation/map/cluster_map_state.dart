@@ -20,21 +20,6 @@ abstract class ClusterMapStateBase with Store {
 
   TreeGetterState treegetterState = getIt.get<TreeGetterState>();
 
-  @observable
-  // ignore: prefer_collection_literals
-  Set<Marker> markers = Set();
-
-  // ClusterManager initClusterManager() {
-  //   return ClusterManager<Tree>(treegetterState.trees, updateMarkers,
-  //       markerBuilder: markerBuilder);
-  // }
-
-  @action
-  void updateMarkers(Set<Marker> loadedMarkers) {
-    debugPrint('Updated ${markers.length} markers');
-    markers = loadedMarkers;
-  }
-
   @action
   Future<Marker> Function(Cluster<Tree>) get markerBuilder => (cluster) async {
         return Marker(
