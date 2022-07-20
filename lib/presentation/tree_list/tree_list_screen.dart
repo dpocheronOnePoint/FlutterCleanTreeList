@@ -1,3 +1,5 @@
+import 'package:anim_search_bar/anim_search_bar.dart';
+import 'package:clean_archi_flutter_tree_list/presentation/tree_list/widgets/search_bar.dart';
 import 'package:clean_archi_flutter_tree_list/presentation/tree_list/widgets/tree_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -14,6 +16,16 @@ class TreeListScreen extends StatefulWidget {
 
 class _TreeListScreenState extends State<TreeListScreen> {
   TreeGetterState treeListState = getIt.get<TreeGetterState>();
+  TextEditingController textController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    textController.addListener(() {
+      final String text = textController.text;
+      print('Voici mon texte ==> ${text}');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +36,14 @@ class _TreeListScreenState extends State<TreeListScreen> {
 
       return ListView.builder(
           padding: const EdgeInsets.all(8),
+          shrinkWrap: true,
           itemCount: treeListState.trees.length,
           itemBuilder: (BuildContext context, int index) {
-            return TreeListItem(tree: treeListState.trees[index]);
+            if (index == 0) {
+              return SearchBar();
+            } else {
+              return TreeListItem(tree: treeListState.trees[index]);
+            }
           });
     });
   }
