@@ -33,18 +33,37 @@ class _TreeListScreenState extends State<TreeListScreen> {
       if (treeListState.isLoading) {
         return const Center(child: CircularProgressIndicator());
       }
+      return Column(
+        children: <Widget>[
+          Container(
+            margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
+            child: SearchBar(),
+          ),
+          Expanded(
+              child: ListView.builder(
+                  padding: const EdgeInsets.all(8),
+                  shrinkWrap: true,
+                  itemCount: treeListState.trees.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    return TreeListItem(tree: treeListState.trees[index]);
+                  }))
+        ],
+      );
+      // return ListView(children: [
+      //   SearchBar(),
 
-      return ListView.builder(
-          padding: const EdgeInsets.all(8),
-          shrinkWrap: true,
-          itemCount: treeListState.trees.length,
-          itemBuilder: (BuildContext context, int index) {
-            if (index == 0) {
-              return SearchBar();
-            } else {
-              return TreeListItem(tree: treeListState.trees[index]);
-            }
-          });
+      // ]);
+      // return ListView.builder(
+      //     padding: const EdgeInsets.all(8),
+      //     shrinkWrap: true,
+      //     itemCount: treeListState.trees.length,
+      //     itemBuilder: (BuildContext context, int index) {
+      //       if (index == 0) {
+      //         return SearchBar();
+      //       } else {
+      //         return TreeListItem(tree: treeListState.trees[index]);
+      //       }
+      //     });
     });
   }
 }
