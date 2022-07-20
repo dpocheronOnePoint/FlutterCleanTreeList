@@ -1,4 +1,3 @@
-import 'package:anim_search_bar/anim_search_bar.dart';
 import 'package:clean_archi_flutter_tree_list/presentation/tree_list/widgets/search_bar.dart';
 import 'package:clean_archi_flutter_tree_list/presentation/tree_list/widgets/tree_list_item.dart';
 import 'package:flutter/material.dart';
@@ -39,14 +38,29 @@ class _TreeListScreenState extends State<TreeListScreen> {
             margin: const EdgeInsets.fromLTRB(16, 16, 16, 16),
             child: SearchBar(),
           ),
+          Text("Nombre d'arbes: ${treeListState.trees.length}"),
           Expanded(
-              child: ListView.builder(
-                  padding: const EdgeInsets.all(8),
-                  shrinkWrap: true,
-                  itemCount: treeListState.trees.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return TreeListItem(tree: treeListState.trees[index]);
-                  }))
+              child: NotificationListener<ScrollNotification>(
+                  // Method to check if the user has scroll 2/3 of the list
+                  // To load the next page
+                  onNotification: (ScrollNotification notification) {
+                    final currentPosition = notification.metrics.pixels;
+                    final maxPosition = notification.metrics.maxScrollExtent;
+                    if (currentPosition >= maxPosition * 2 / 3) {
+                      print("Je pass ici ");
+                    }
+                    return true;
+                  },
+                  child: ListView.builder(
+                      padding: const EdgeInsets.all(8),
+                      shrinkWrap: true,
+                      itemCount: treeListState.trees.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return TreeListItem(
+                          tree: treeListState.trees[index],
+                          index: index,
+                        );
+                      })))
         ],
       );
       // return ListView(children: [

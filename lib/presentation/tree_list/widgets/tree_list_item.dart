@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 
 class TreeListItem extends StatelessWidget {
   final Tree tree;
-  const TreeListItem({Key? key, required this.tree}) : super(key: key);
+  final int index;
+  const TreeListItem({Key? key, required this.tree, required this.index})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +23,7 @@ class TreeListItem extends StatelessWidget {
         },
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           const SizedBox(height: 15),
-          Text('mon nom: ${tree.name}'),
+          Text('${index} => mon nom: ${tree.name}'),
           const SizedBox(height: 15),
         ]));
   }
