@@ -1,3 +1,4 @@
+import 'package:clean_archi_flutter_tree_list/presentation/tree_list/widgets/tree_list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
@@ -21,9 +22,12 @@ class _TreeListScreenState extends State<TreeListScreen> {
         return const Center(child: CircularProgressIndicator());
       }
 
-      return Center(
-          child:
-              Text('Le nom du premier arbre ${treeListState.trees[0].name}'));
+      return ListView.builder(
+          padding: const EdgeInsets.all(8),
+          itemCount: treeListState.trees.length,
+          itemBuilder: (BuildContext context, int index) {
+            return TreeListItem(tree: treeListState.trees[index]);
+          });
     });
   }
 }
