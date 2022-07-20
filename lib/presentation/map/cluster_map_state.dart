@@ -24,18 +24,19 @@ abstract class ClusterMapStateBase with Store {
   // ignore: prefer_collection_literals
   Set<Marker> markers = Set();
 
+  // ClusterManager initClusterManager() {
+  //   return ClusterManager<Tree>(treegetterState.trees, updateMarkers,
+  //       markerBuilder: markerBuilder);
+  // }
+
   @action
-  ClusterManager initClusterManager() {
-    return ClusterManager<Tree>(treegetterState.trees, _updateMarkers,
-        markerBuilder: _markerBuilder);
-  }
-
-  void _updateMarkers(Set<Marker> maloadedMarkers) {
+  void updateMarkers(Set<Marker> loadedMarkers) {
     debugPrint('Updated ${markers.length} markers');
-    markers = maloadedMarkers;
+    markers = loadedMarkers;
   }
 
-  Future<Marker> Function(Cluster<Tree>) get _markerBuilder => (cluster) async {
+  @action
+  Future<Marker> Function(Cluster<Tree>) get markerBuilder => (cluster) async {
         return Marker(
           markerId: MarkerId(cluster.getId()),
           position: cluster.location,
